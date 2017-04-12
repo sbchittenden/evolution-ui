@@ -3,8 +3,50 @@ title: "Documentation"
 layout: default
 ---
 
-{% assign componentsByType = site.components | group_by:'type' %}
+{% comment %}
+  First, split up components by category ('standard' or 'evolution')
+{% endcomment %}
+{% assign componentsByCategory = site.components | group_by:'category' %}
+<div class="evo_c-3dlayers">
+  {% comment %}
+    Next, loop through categories and create a layer for each
+  {% endcomment %}
+  {% for category in componentsByCategory reversed %}
+    {% comment %}
+      Set the first category ('standard') as selected by default
+    {% endcomment %}
+    <div class="evo_c-3dlayer{% if forloop.last %} evo_c-3dlayer--selected{% endif %}">
+      <div class="evo_c-3dlayer__header" draggable="true">
+        <span class="evo_c-3dlayer__header__label">{{ category.name | capitalize }}</span>
+        <i class="material-icons evo_c-3dlayer__header__icon-visited">done</i>
+        <i class="material-icons evo_c-3dlayer__header__icon-drag" draggable="true">code</i></div>
+      <div class="evo_c-3dlayer__content">
+        {% comment %}
+          Create a sidebar navigation menu for all the component types in this category
+        {% endcomment %}
+        {% assign componentTypes = category.items | group_by:'type' %}
+        {% for type in componentTypes %}
+          {{ type.name | capitalize }}
+        {% endfor %}
+        {% comment %}
+          Display each component variant
+        {% endcomment %}
+        {% for type in componentTypes %}
+          {% assign sortedTypes = type.items | sort:'order' %}
+          {% for variant in sortedTypes %}
+            {% include variant.html %}
+            {% if forloop.last != true %}
+              <hr class="site-section-content-divider">
+            {% endif %}
+          {% endfor %}
+        {% endfor %}
+      </div>
+    </div>
+  {% endfor %}
+</div>
 
+{% comment %}
+{% assign componentsByType = site.components | group_by:'type' %}
 <div class="site-sidebar" aria-label="Sidebar">
   <button class="site-sidebar-toggle js-offcanvas-toggle" type="button">
     <span class="site-sidebar-toggle-icon">
@@ -41,3 +83,4 @@ layout: default
     </article>
   {% endfor %}
 </div>
+{% endcomment %}
