@@ -1,17 +1,18 @@
-<!doctype html>
-<html class="no-js" lang="">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>CSS Animations</title>
-    <meta name="description" content="">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="apple-touch-icon" href="apple-touch-icon.png">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab|Roboto:300,400,700" rel="stylesheet">
-    <link href="../../styles/main.css" rel="stylesheet">
-  </head>
-  <body>
+---
+title: "Default"
+description:
+  <p>
+    Evolution UI provides useful CSS animations for your projects.
+  </p>
+  <p>
+    Using the helper class <code>.evo_h-anim--[animation name]</code> your can
+    add the intended animation to your elements.
+  </p>
+type: CSS animations
+no_markup: true
+order: 1
+---
+
 
 <style>
   .css_showcase_table td code { margin-left: 30px; }
@@ -37,6 +38,7 @@
     transform-style: preserve-3d;
     box-shadow: 0 0 4px 2px rgba(0,0,0,0.2);
   }
+
   .animation__face {
     position: absolute;
     width: 100%;
@@ -558,7 +560,7 @@
             All animations' attributes can be manipulated through
             a <code>data-[CSS animation property]</code> attribute.
           </p>
-          <p>Evolution UI will add all prefixes (if necessary).</p>
+          <p>Evolution UI will add automatically all prefixes for you (if necessary).</p>
           <p>For Example:</p>
           <p>
             <code>
@@ -567,7 +569,7 @@
           </p>
           <p>
             <code>
-              &lt;button class="evo_h-anim--fadeIn" data-animation-timing-function="ease-out"&gt;Test&lt;/button&gt;
+              &lt;img src=".." class="evo_h-anim--fadeIn" data-animation-timing-function="ease-out"&gt;
             </code>
           </p>
         </td>
@@ -575,9 +577,3 @@
     </tbody>
   </table>
 </div>
-
-
-  <script type="text/javascript" src="../../scripts/app.js"></script>
-
-  </body>
-</html>
